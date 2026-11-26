@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>弈境 · 中国象棋</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="masthead"><div class="shell brand">
+    <span class="seal" aria-hidden="true">弈</span>
+    <div><h1>弈境</h1><span>中国象棋</span></div>
+    <span class="engine-label">Pikafish 人机对弈</span>
+  </div></header>
+  <main class="shell layout">
+    <section class="arena" aria-label="对弈区">
+      <div class="bar"><strong id="status" role="status"></strong><span id="time">等待开局</span></div>
+      <div class="player" id="opponent-card"><span class="avatar" aria-hidden="true"></span><div><strong>Pikafish</strong><div class="captures"></div></div><span class="color-label"></span></div>
+      <svg id="board" viewBox="0 0 540 600" aria-label="中国象棋棋盘"></svg>
+      <div class="player" id="human-card"><span class="avatar" aria-hidden="true"></span><div><strong>你</strong><div class="captures"></div></div><span class="color-label"></span></div>
+      <div class="actions" aria-label="对局操作">
+        <button id="undo">悔棋</button><button id="save">保存</button><button id="load">恢复</button><button id="draw">提和</button><button id="resign" class="danger">认输</button>
+      </div>
+      <div class="feedback"><p id="error" role="status"></p><button id="retry" hidden>重试 AI</button></div>
+    </section>
+    <aside class="sidebar" aria-label="棋谱与设置">
+      <section class="card score">
+        <div class="card-head"><h2>对局棋谱</h2><span id="count"></span></div>
+        <div class="score-labels" aria-hidden="true"><span>回合</span><span>红方</span><span>黑方</span></div>
+        <p id="empty-history">落子后，着法将在这里显示。</p>
+        <ol id="history" aria-label="着法记录"></ol>
+      </section>
+      <section class="card settings">
+        <div class="card-head"><h2>对局设置</h2></div>
+        <div class="fields">
+          <label>执子（新局生效）<select id="side"><option value="r">红方先行</option><option value="b">黑方后行</option></select></label>
+          <label>引擎难度<select id="difficulty"><option value="300">初级</option><option value="1000">中级</option><option value="3000" selected>高级</option><option value="10000">专家</option></select></label>
+        </div>
+        <details><summary>高级搜索参数</summary><div class="fields">
+          <label>用时（毫秒）<input id="searchTime" type="number" min="50" max="60000" value="3000"></label>
+          <label>搜索深度（0 不限）<input id="depth" type="number" min="0" max="128" value="0"></label>
+          <label>线程数<input id="threads" type="number" min="1" max="64" value="2"></label>
+          <label>Hash（MB）<input id="hash" type="number" min="1" max="1024" value="128"></label>
+        </div></details>
+        <button id="new">开始新局</button>
+      </section>
+      <details class="rules"><summary>规则范围</summary><p>支持三轮重复裁决、单方长将和慢棋自然限着。部分长捉、长杀可自动识别，复杂棋例会暂停并提示人工裁决。</p></details>
+    </aside>
+  </main>
+  <script type="module" src="/app.mjs"></script>
+</body>
+</html>

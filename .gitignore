@@ -1,0 +1,12 @@
+/.netlify/
+/Pikafish.7z
+/.downloads/
+/engine/
+/deploy-netlify/build/
+/deploy-netlify/runtime/*.deb
+node_modules/
+__pycache__/
+.env
+.env.*
+*.pem
+*.log
