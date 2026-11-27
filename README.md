@@ -2,7 +2,7 @@
 
 ## 启动
 
-需要 Node.js 24 或更新版本，无 npm 依赖。双击 start.bat，浏览器打开 http://127.0.0.1:3100 。或在本目录运行 `node server.mjs`。
+需要 Node.js 24 或更新版本，无需运行 `npm install`。双击 start.bat，浏览器打开 http://127.0.0.1:3100 。或在本目录运行 `node server.mjs`。
 
 首次克隆后，在项目目录运行 `powershell -ExecutionPolicy Bypass -File .\setup-engine.ps1`。脚本下载并校验官方 Pikafish 2026-09-06 与配套 NNUE，解压至 engine 目录。可设置 PIKAFISH_PATH 指定其他引擎，PIKAFISH_CWD 指定工作目录。引擎错误明确显示，不会使用替代 AI。
 
@@ -26,7 +26,7 @@ adjudication.mjs 按初始棋盘格分配固定棋子 ID。每步记录棋子迁
 复杂多步杀法、联合捉、根子与完整交换价值、九回合非标准循环例外仍未完整自动覆盖。已按第八章图 6 原图及着法验证自动长将裁决。图 7、12、19、25 同时覆盖官方定性的裁决表和原图局面的人工裁决路径。另用构造局面验证直接长捉识别。不能据此认定完整支持 2020 版竞赛规则。提和按钮暂不实现 AI 接受提和。
 
 
-当前后端为本机单用户服务，不含账户、对局持久化和互联网部署。使用原生 ES modules + SVG，未使用 React/Vite；本机 npm 路径损坏，因此使用零第三方依赖的实现。
+本地版为单用户服务，棋局保存在当前浏览器。前端使用原生 HTML、CSS、JavaScript 和 SVG，后端使用 Node.js 内置模块，无需安装第三方 npm 包。AI 对弈需要 Pikafish 引擎和配套的 NNUE 模型，可通过上面的安装脚本获取。
 
 ## 测试
 
